@@ -137,9 +137,11 @@
       }
 
       @include media-breakpoint-up($next) {
-        flex-direction: row;
-        flex-wrap: nowrap;
-        align-items: center;
+        & {
+          flex-direction: row;
+          flex-wrap: nowrap;
+          align-items: center;
+        }
 
         .navbar-nav {
           flex-direction: row;
