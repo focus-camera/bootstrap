@@ -6,9 +6,9 @@
   color: $body-color;
 
   hr {
-    border-top-color: darken($border, 5%);
+    border-top-color: color.adjust($border, $lightness: -5%);
   }
   .alert-link {
-    color: darken($body-color, 10%);
+    color: color.adjust($body-color, $lightness: -10%);
   }
 }

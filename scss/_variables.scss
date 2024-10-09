@@ -692,20 +692,20 @@ $jumbotron-bg:                   $gray-lighter !default;
 
 $state-success-text:             #3c763d !default;
 $state-success-bg:               #dff0d8 !default;
-$state-success-border:           darken($state-success-bg, 5%) !default;
+$state-success-border:           color.adjust($state-success-bg, $lightness: -5%) !default;
 
 $state-info-text:                #31708f !default;
 $state-info-bg:                  #d9edf7 !default;
-$state-info-border:              darken($state-info-bg, 7%) !default;
+$state-info-border:              color.adjust($state-info-bg, $lightness: -7%) !default;
 
 $state-warning-text:             #8a6d3b !default;
 $state-warning-bg:               #fcf8e3 !default;
 $mark-bg:                        $state-warning-bg !default;
-$state-warning-border:           darken($state-warning-bg, 5%) !default;
+$state-warning-border:           color.adjust($state-warning-bg, $lightness: -5%) !default;
 
 $state-danger-text:              #a94442 !default;
 $state-danger-bg:                #f2dede !default;
-$state-danger-border:            darken($state-danger-bg, 5%) !default;
+$state-danger-border:            color.adjust($state-danger-bg, $lightness: -5%) !default;
 
 
 // Cards
@@ -753,7 +753,7 @@ $popover-border-width:                $border-width !default;
 $popover-border-color:                rgba($black,.2) !default;
 $popover-box-shadow:                  0 5px 10px rgba($black,.2) !default;
 
-$popover-title-bg:                    darken($popover-bg, 3%) !default;
+$popover-title-bg:                    color.adjust($popover-bg, $lightness: -3%) !default;
 $popover-title-padding-x:             14px !default;
 $popover-title-padding-y:             8px !default;
 
@@ -874,7 +874,7 @@ $list-group-hover-bg:            $gray-lightest !default;
 $list-group-active-color:        $component-active-color !default;
 $list-group-active-bg:           $component-active-bg !default;
 $list-group-active-border:       $list-group-active-bg !default;
-$list-group-active-text-color:   lighten($list-group-active-bg, 50%) !default;
+$list-group-active-text-color:   color.adjust($list-group-active-bg, $lightness: 50%) !default;
 
 $list-group-disabled-color:      $gray-light !default;
 $list-group-disabled-bg:         $list-group-bg !default;
