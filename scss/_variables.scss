@@ -42,6 +42,7 @@
 // Code
 
 @use "sass:math";
+@use "sass:color";
 
 @mixin _assert-ascending($map, $map-name) {
   $prev-key: null;
@@ -195,7 +196,7 @@ $inverse-color: $gray-lighter !default;
 
 $link-color:            $brand-primary !default;
 $link-decoration:       none !default;
-$link-hover-color:      darken($link-color, 15%) !default;
+$link-hover-color:      color.adjust($link-color, $lightness: -15%) !default;
 $link-hover-decoration: underline !default;
 
 
@@ -431,7 +432,7 @@ $input-border-radius-lg:         $border-radius-lg !default;
 $input-border-radius-sm:         $border-radius-sm !default;
 
 $input-bg-focus:                 $input-bg !default;
-$input-border-focus:             lighten($brand-primary, 25%) !default;
+$input-border-focus:             color.adjust($brand-primary, $lightness: 25%) !default;
 $input-box-shadow-focus:         $input-box-shadow, rgba($input-border-focus, .6) !default;
 $input-color-focus:              $input-color !default;
 
@@ -487,7 +488,7 @@ $custom-control-checked-indicator-box-shadow: none !default;
 $custom-control-focus-indicator-box-shadow: 0 0 0 1px $body-bg, 0 0 0 3px $brand-primary !default;
 
 $custom-control-active-indicator-color:      $white !default;
-$custom-control-active-indicator-bg:         lighten($brand-primary, 35%) !default;
+$custom-control-active-indicator-bg:         color.adjust($brand-primary, $lightness: 35%) !default;
 $custom-control-active-indicator-box-shadow: none !default;
 
 $custom-checkbox-radius: $border-radius !default;
@@ -516,7 +517,7 @@ $custom-select-border-width:  $input-btn-border-width !default;
 $custom-select-border-color:  $input-border-color !default;
 $custom-select-border-radius: $border-radius !default;
 
-$custom-select-focus-border-color: lighten($brand-primary, 25%) !default;
+$custom-select-focus-border-color: color.adjust($brand-primary, $lightness: 25%) !default;
 $custom-select-focus-box-shadow:   inset 0 1px 2px rgba($black, .075), 0 0 5px rgba($custom-select-focus-border-color, .5) !default;
 
 $custom-select-sm-padding-y:  .2rem !default;
@@ -572,7 +573,7 @@ $dropdown-divider-bg:            $gray-lighter !default;
 $dropdown-box-shadow:            0 .5rem 1rem rgba($black,.175) !default;
 
 $dropdown-link-color:            $gray-dark !default;
-$dropdown-link-hover-color:      darken($gray-dark, 5%) !default;
+$dropdown-link-hover-color:      color.adjust($gray-dark, $lightness: -5%) !default;
 $dropdown-link-hover-bg:         $gray-lightest !default;
 
 $dropdown-link-active-color:     $component-active-color !default;
