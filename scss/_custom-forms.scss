@@ -4,6 +4,7 @@
 // Released under MIT and copyright 2014 Waybury.
 // https://useiconic.com/open
 
+@use "sass:map";
 
 // Checkboxes and radios
 //
@@ -233,7 +234,7 @@
   @include border-radius($custom-file-border-radius);
   @include box-shadow($custom-file-box-shadow);
 
-  @each $lang, $text in map-get($custom-file-text, placeholder) {
+  @each $lang, $text in map.get($custom-file-text, placeholder) {
     &:lang(#{$lang})::after {
       content: $text;
     }
@@ -255,7 +256,7 @@
     @include border-radius(0 $custom-file-border-radius $custom-file-border-radius 0);
   }
 
-  @each $lang, $text in map-get($custom-file-text, button-label) {
+  @each $lang, $text in map.get($custom-file-text, button-label) {
     &:lang(#{$lang})::before {
       content: $text;
     }

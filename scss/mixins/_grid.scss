@@ -3,15 +3,16 @@
 // Generate semantic grid columns with these mixins.
 
 @use "sass:math";
+@use "sass:map";
 
 @mixin make-container($gutters: $grid-gutter-widths) {
   position: relative;
   margin-left: auto;
   margin-right: auto;
 
-  @each $breakpoint in map-keys($gutters) {
+  @each $breakpoint in map.keys($gutters) {
     @include media-breakpoint-up($breakpoint) {
-      $gutter: map-get($gutters, $breakpoint);
+      $gutter: map.get($gutters, $breakpoint);
       padding-right: ($gutter * 0.5);
       padding-left:  ($gutter * 0.5);
     }
@@ -30,9 +31,9 @@
 }
 
 @mixin make-gutters($gutters: $grid-gutter-widths) {
-  @each $breakpoint in map-keys($gutters) {
+  @each $breakpoint in map.keys($gutters) {
     @include media-breakpoint-up($breakpoint) {
-      $gutter: map-get($gutters, $breakpoint);
+      $gutter: map.get($gutters, $breakpoint);
       padding-right: ($gutter * 0.5);
       padding-left:  ($gutter * 0.5);
     }
@@ -43,9 +44,9 @@
   display: flex;
   flex-wrap: wrap;
 
-  @each $breakpoint in map-keys($gutters) {
+  @each $breakpoint in map.keys($gutters) {
     @include media-breakpoint-up($breakpoint) {
-      $gutter: map-get($gutters, $breakpoint);
+      $gutter: map.get($gutters, $breakpoint);
       margin-right: math.div($gutter, -2);
       margin-left:  math.div($gutter, -2);
     }
@@ -60,9 +61,9 @@
   width: 100%;
   min-height: 1px; // Prevent collapsing
 
-  @each $breakpoint in map-keys($gutters) {
+  @each $breakpoint in map.keys($gutters) {
     @include media-breakpoint-up($breakpoint) {
-      $gutter: map-get($gutters, $breakpoint);
+      $gutter: map.get($gutters, $breakpoint);
       padding-right: ($gutter * 0.5);
       padding-left:  ($gutter * 0.5);
     }

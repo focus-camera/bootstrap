@@ -2,13 +2,15 @@
 // Visibility utilities
 //
 
+@use "sass:map";
+
 .invisible {
   @include invisible();
 }
 
 // Responsive visibility utilities
 
-@each $bp in map-keys($grid-breakpoints) {
+@each $bp in map.keys($grid-breakpoints) {
   .hidden-#{$bp}-up {
     @include media-breakpoint-up($bp) {
       display: none !important;
