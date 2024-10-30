@@ -6,49 +6,49 @@
  */
 
 // Core variables and mixins
-@import "variables";
-@import "mixins";
-@import "custom";
+@use "variables";
+@use "mixins";
+@use "custom";
 
 // Reset and dependencies
-@import "normalize";
-@import "print";
+@use "normalize";
+@use "print";
 
 // Core CSS
-@import "reboot";
-@import "type";
-@import "images";
-@import "code";
-@import "grid";
-@import "tables";
-@import "forms";
-@import "buttons";
+@use "reboot";
+@use "type";
+@use "images";
+@use "code";
+@use "grid";
+@use "tables";
+@use "forms";
+@use "buttons";
 
 // Components
-@import "transitions";
-@import "dropdown";
-@import "button-group";
-@import "input-group";
-@import "custom-forms";
-@import "nav";
-@import "navbar";
-@import "card";
-@import "breadcrumb";
-@import "pagination";
-@import "badge";
-@import "jumbotron";
-@import "alert";
-@import "progress";
-@import "media";
-@import "list-group";
-@import "responsive-embed";
-@import "close";
+@use "transitions";
+@use "dropdown";
+@use "button-group";
+@use "input-group";
+@use "custom-forms";
+@use "nav";
+@use "navbar";
+@use "card";
+@use "breadcrumb";
+@use "pagination";
+@use "badge";
+@use "jumbotron";
+@use "alert";
+@use "progress";
+@use "media";
+@use "list-group";
+@use "responsive-embed";
+@use "close";
 
 // Components w/ JavaScript
-@import "modal";
-@import "tooltip";
-@import "popover";
-@import "carousel";
+@use "modal";
+@use "tooltip";
+@use "popover";
+@use "carousel";
 
 // Utility classes
-@import "utilities";
+@use "utilities";

@@ -19,39 +19,39 @@
 }
 
 // Utilities
-@import "mixins/breakpoints";
-@import "mixins/hover";
-@import "mixins/image";
-@import "mixins/badge";
-@import "mixins/resize";
-@import "mixins/screen-reader";
-@import "mixins/size";
-@import "mixins/reset-text";
-@import "mixins/text-emphasis";
-@import "mixins/text-hide";
-@import "mixins/text-truncate";
-@import "mixins/transforms";
-@import "mixins/visibility";
+@use "mixins/breakpoints";
+@use "mixins/hover";
+@use "mixins/image";
+@use "mixins/badge";
+@use "mixins/resize";
+@use "mixins/screen-reader";
+@use "mixins/size";
+@use "mixins/reset-text";
+@use "mixins/text-emphasis";
+@use "mixins/text-hide";
+@use "mixins/text-truncate";
+@use "mixins/transforms";
+@use "mixins/visibility";
 
 // // Components
-@import "mixins/alert";
-@import "mixins/buttons";
-@import "mixins/cards";
-@import "mixins/pagination";
-@import "mixins/lists";
-@import "mixins/list-group";
-@import "mixins/nav-divider";
-@import "mixins/forms";
-@import "mixins/table-row";
+@use "mixins/alert";
+@use "mixins/buttons";
+@use "mixins/cards";
+@use "mixins/pagination";
+@use "mixins/lists";
+@use "mixins/list-group";
+@use "mixins/nav-divider";
+@use "mixins/forms";
+@use "mixins/table-row";
 
 // // Skins
-@import "mixins/background-variant";
-@import "mixins/border-radius";
-@import "mixins/gradients";
+@use "mixins/background-variant";
+@use "mixins/border-radius";
+@use "mixins/gradients";
 
 // // Layout
-@import "mixins/clearfix";
-// @import "mixins/navbar-align";
-@import "mixins/grid-framework";
-@import "mixins/grid";
-@import "mixins/float";
+@use "mixins/clearfix";
+// @use "mixins/navbar-align";
+@use "mixins/grid-framework";
+@use "mixins/grid";
+@use "mixins/float";

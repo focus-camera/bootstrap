@@ -2,9 +2,9 @@
 //
 // Includes only Normalize and our custom Reboot reset.
 
-@import "variables";
-@import "mixins";
-@import "custom";
+@use "variables";
+@use "mixins";
+@use "custom";
 
-@import "normalize";
-@import "reboot";
+@use "normalize";
+@use "reboot";
