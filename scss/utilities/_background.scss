@@ -2,6 +2,8 @@
 // Contextual backgrounds
 //
 
+@use "sass:color";
+
 .bg-faded {
   background-color: color.adjust($body-bg, $lightness: -3%);
 }

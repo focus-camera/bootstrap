@@ -1,3 +1,5 @@
+@use "sass:color";
+
 .jumbotron {
   padding: $jumbotron-padding ($jumbotron-padding * 0.5);
   margin-bottom: $jumbotron-padding;
