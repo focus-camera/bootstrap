@@ -1,3 +1,5 @@
+@use "../variables";
+
 @mixin hover {
   // TODO: re-enable along with mq4-hover-shim
 //  @if $enable-hover-media-query {
@@ -13,7 +15,7 @@
 }
 
 @mixin hover-focus {
-  @if $enable-hover-media-query {
+  @if variables.$enable-hover-media-query {
     &:focus { @content }
     @include hover { @content }
   }
@@ -26,7 +28,7 @@
 }
 
 @mixin plain-hover-focus {
-  @if $enable-hover-media-query {
+  @if variables.$enable-hover-media-query {
     &,
     &:focus {
       @content
@@ -43,7 +45,7 @@
 }
 
 @mixin hover-focus-active {
-  @if $enable-hover-media-query {
+  @if variables.$enable-hover-media-query {
     &:focus,
     &:active {
       @content

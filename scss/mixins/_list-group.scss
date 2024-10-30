@@ -1,5 +1,9 @@
 // List Groups
 
+@use "sass:color";
+
+@use "../mixins";
+
 @mixin list-group-item-variant($state, $background, $color) {
   .list-group-item-#{$state} {
     color: $color;
@@ -14,7 +18,7 @@
       color: inherit;
     }
 
-    @include hover-focus {
+    @include mixins.hover-focus {
       color: $color;
       background-color: color.adjust($background, $lightness: -5%);
     }

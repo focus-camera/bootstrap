@@ -1,5 +1,7 @@
 // Pagination
 
+@use "../mixins";
+
 @mixin pagination-size($padding-y, $padding-x, $font-size, $line-height, $border-radius) {
   .page-link {
     padding: $padding-y $padding-x;
@@ -9,12 +11,12 @@
   .page-item {
     &:first-child {
       .page-link {
-        @include border-left-radius($border-radius);
+        @include mixins.border-left-radius($border-radius);
       }
     }
     &:last-child {
       .page-link {
-        @include border-right-radius($border-radius);
+        @include mixins.border-right-radius($border-radius);
       }
     }
   }

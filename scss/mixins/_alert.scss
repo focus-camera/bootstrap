@@ -1,5 +1,7 @@
 // Alerts
 
+@use "sass:color";
+
 @mixin alert-variant($background, $border, $body-color) {
   background-color: $background;
   border-color: $border;

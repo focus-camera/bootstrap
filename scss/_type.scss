@@ -1,48 +1,51 @@
+@use "mixins/lists";
+@use "variables";
+
 //
 // Headings
 //
 
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
-  margin-bottom: $headings-margin-bottom;
-  font-family: $headings-font-family;
-  font-weight: $headings-font-weight;
-  line-height: $headings-line-height;
-  color: $headings-color;
+  margin-bottom: variables.$headings-margin-bottom;
+  font-family: variables.$headings-font-family;
+  font-weight: variables.$headings-font-weight;
+  line-height: variables.$headings-line-height;
+  color: variables.$headings-color;
 }
 
-h1, .h1 { font-size: $font-size-h1; }
-h2, .h2 { font-size: $font-size-h2; }
-h3, .h3 { font-size: $font-size-h3; }
-h4, .h4 { font-size: $font-size-h4; }
-h5, .h5 { font-size: $font-size-h5; }
-h6, .h6 { font-size: $font-size-h6; }
+h1, .h1 { font-size: variables.$font-size-h1; }
+h2, .h2 { font-size: variables.$font-size-h2; }
+h3, .h3 { font-size: variables.$font-size-h3; }
+h4, .h4 { font-size: variables.$font-size-h4; }
+h5, .h5 { font-size: variables.$font-size-h5; }
+h6, .h6 { font-size: variables.$font-size-h6; }
 
 .lead {
-  font-size: $lead-font-size;
-  font-weight: $lead-font-weight;
+  font-size: variables.$lead-font-size;
+  font-weight: variables.$lead-font-weight;
 }
 
 // Type display classes
 .display-1 {
-  font-size: $display1-size;
-  font-weight: $display1-weight;
-  line-height: $display-line-height;
+  font-size: variables.$display1-size;
+  font-weight: variables.$display1-weight;
+  line-height: variables.$display-line-height;
 }
 .display-2 {
-  font-size: $display2-size;
-  font-weight: $display2-weight;
-  line-height: $display-line-height;
+  font-size: variables.$display2-size;
+  font-weight: variables.$display2-weight;
+  line-height: variables.$display-line-height;
 }
 .display-3 {
-  font-size: $display3-size;
-  font-weight: $display3-weight;
-  line-height: $display-line-height;
+  font-size: variables.$display3-size;
+  font-weight: variables.$display3-weight;
+  line-height: variables.$display-line-height;
 }
 .display-4 {
-  font-size: $display4-size;
-  font-weight: $display4-weight;
-  line-height: $display-line-height;
+  font-size: variables.$display4-size;
+  font-weight: variables.$display4-weight;
+  line-height: variables.$display-line-height;
 }
 
 
@@ -51,10 +54,10 @@ h6, .h6 { font-size: $font-size-h6; }
 //
 
 hr {
-  margin-top: $spacer-y;
-  margin-bottom: $spacer-y;
+  margin-top: variables.$spacer-y;
+  margin-bottom: variables.$spacer-y;
   border: 0;
-  border-top: $hr-border-width solid $hr-border-color;
+  border-top: variables.$hr-border-width solid variables.$hr-border-color;
 }
 
 
@@ -64,14 +67,14 @@ hr {
 
 small,
 .small {
-  font-size: $small-font-size;
-  font-weight: $font-weight-normal;
+  font-size: variables.$small-font-size;
+  font-weight: variables.$font-weight-normal;
 }
 
 mark,
 .mark {
-  padding: $mark-padding;
-  background-color: $mark-bg;
+  padding: variables.$mark-padding;
+  background-color: variables.$mark-bg;
 }
 
 
@@ -80,18 +83,18 @@ mark,
 //
 
 .list-unstyled {
-  @include list-unstyled;
+  @include lists.list-unstyled;
 }
 
 // Inline turns list items into inline-block
 .list-inline {
-  @include list-unstyled;
+  @include lists.list-unstyled;
 }
 .list-inline-item {
   display: inline-block;
 
   &:not(:last-child) {
-    margin-right: $list-inline-padding;
+    margin-right: variables.$list-inline-padding;
   }
 }
 
@@ -108,16 +111,16 @@ mark,
 
 // Blockquotes
 .blockquote {
-  padding: ($spacer * 0.5) $spacer;
-  margin-bottom: $spacer;
-  font-size: $blockquote-font-size;
-  border-left: $blockquote-border-width solid $blockquote-border-color;
+  padding: (variables.$spacer * 0.5) variables.$spacer;
+  margin-bottom: variables.$spacer;
+  font-size: variables.$blockquote-font-size;
+  border-left: variables.$blockquote-border-width solid variables.$blockquote-border-color;
 }
 
 .blockquote-footer {
   display: block;
   font-size: 80%; // back to default font-size
-  color: $blockquote-small-color;
+  color: variables.$blockquote-small-color;
 
   &::before {
     content: "\2014 \00A0"; // em dash, nbsp
@@ -126,10 +129,10 @@ mark,
 
 // Opposite alignment of blockquote
 .blockquote-reverse {
-  padding-right: $spacer;
+  padding-right: variables.$spacer;
   padding-left: 0;
   text-align: right;
-  border-right: $blockquote-border-width solid $blockquote-border-color;
+  border-right: variables.$blockquote-border-width solid variables.$blockquote-border-color;
   border-left: 0;
 }
 

@@ -1,3 +1,8 @@
+@use "mixins";
+@use "mixins/border-radius";
+@use "mixins/breakpoints";
+@use "variables";
+
 // .modal-open      - body class for killing the scroll
 // .modal           - container to scroll within
 // .modal-dialog    - positioning shell for the actual modal
@@ -16,7 +21,7 @@
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: $zindex-modal;
+  z-index: variables.$zindex-modal;
   display: none;
   overflow: hidden;
   // Prevent Chrome on Windows from adding a focus outline. For details, see
@@ -28,7 +33,7 @@
 
   // When fading in the modal, animate it to slide down
   &.fade .modal-dialog {
-    @include transition($modal-transition);
+    @include mixins.transition(variables.$modal-transition);
     transform: translate(0, -25%);
   }
   &.show .modal-dialog { transform: translate(0, 0); }
@@ -42,7 +47,7 @@
 .modal-dialog {
   position: relative;
   width: auto;
-  margin: $modal-dialog-margin;
+  margin: variables.$modal-dialog-margin;
 }
 
 // Actual modal
@@ -50,11 +55,11 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  background-color: $modal-content-bg;
+  background-color: variables.$modal-content-bg;
   background-clip: padding-box;
-  border: $modal-content-border-width solid $modal-content-border-color;
-  @include border-radius($border-radius-lg);
-  @include box-shadow($modal-content-xs-box-shadow);
+  border: variables.$modal-content-border-width solid variables.$modal-content-border-color;
+  @include border-radius.border-radius(variables.$border-radius-lg);
+  @include mixins.box-shadow(variables.$modal-content-xs-box-shadow);
   // Remove focus outline from opened modal
   outline: 0;
 }
@@ -66,12 +71,12 @@
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: $zindex-modal-backdrop;
-  background-color: $modal-backdrop-bg;
+  z-index: variables.$zindex-modal-backdrop;
+  background-color: variables.$modal-backdrop-bg;
 
   // Fade for backdrop
   &.fade { opacity: 0; }
-  &.show { opacity: $modal-backdrop-opacity; }
+  &.show { opacity: variables.$modal-backdrop-opacity; }
 }
 
 // Modal header
@@ -80,14 +85,14 @@
   display: flex;
   align-items: center; // vertically center it
   justify-content: space-between; // Put modal header elements (title and dismiss) on opposite ends
-  padding: $modal-header-padding;
-  border-bottom: $modal-header-border-width solid $modal-header-border-color;
+  padding: variables.$modal-header-padding;
+  border-bottom: variables.$modal-header-border-width solid variables.$modal-header-border-color;
 }
 
 // Title text within header
 .modal-title {
   margin-bottom: 0;
-  line-height: $modal-title-line-height;
+  line-height: variables.$modal-title-line-height;
 }
 
 // Modal body
@@ -97,7 +102,7 @@
   // Enable `flex-grow: 1` so that the body take up as much space as possible
   // when should there be a fixed height on `.modal-dialog`.
   flex: 1 1 auto;
-  padding: $modal-inner-padding;
+  padding: variables.$modal-inner-padding;
 }
 
 // Footer (for actions)
@@ -105,8 +110,8 @@
   display: flex;
   align-items: center; // vertically center
   justify-content: flex-end; // Right align buttons with flex property because text-align doesn't work on flex items
-  padding: $modal-inner-padding;
-  border-top: $modal-footer-border-width solid $modal-footer-border-color;
+  padding: variables.$modal-inner-padding;
+  border-top: variables.$modal-footer-border-width solid variables.$modal-footer-border-color;
 
   // Easily place margin between footer elements
   > :not(:first-child) { margin-left: .25rem; }
@@ -123,20 +128,20 @@
 }
 
 // Scale up the modal
-@include media-breakpoint-up(sm) {
+@include breakpoints.media-breakpoint-up(sm) {
   // Automatically set modal's width for larger viewports
   .modal-dialog {
-    max-width: $modal-md;
-    margin: $modal-dialog-sm-up-margin-y auto;
+    max-width: variables.$modal-md;
+    margin: variables.$modal-dialog-sm-up-margin-y auto;
   }
 
   .modal-content {
-    @include box-shadow($modal-content-sm-up-box-shadow);
+    @include mixins.box-shadow(variables.$modal-content-sm-up-box-shadow);
   }
 
-  .modal-sm { max-width: $modal-sm; }
+  .modal-sm { max-width: variables.$modal-sm; }
 }
 
-@include media-breakpoint-up(lg) {
-  .modal-lg { max-width: $modal-lg; }
+@include breakpoints.media-breakpoint-up(lg) {
+  .modal-lg { max-width: variables.$modal-lg; }
 }

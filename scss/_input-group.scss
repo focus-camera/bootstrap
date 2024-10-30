@@ -1,3 +1,7 @@
+@use "mixins/border-radius";
+@use "mixins/hover";
+@use "variables";
+
 //
 // Base styles
 //
@@ -19,7 +23,7 @@
     margin-bottom: 0;
 
     // Bring the "active" form control to the front
-    @include hover-focus-active {
+    @include hover.hover-focus-active {
       z-index: 3;
     }
   }
@@ -34,7 +38,7 @@
   justify-content: center;
 
   &:not(:first-child):not(:last-child) {
-    @include border-radius(0);
+    @include border-radius.border-radius(0);
   }
 }
 
@@ -67,27 +71,27 @@
 //
 
 .input-group-addon {
-  padding: $input-padding-y $input-padding-x;
+  padding: variables.$input-padding-y variables.$input-padding-x;
   margin-bottom: 0; // Allow use of <label> elements by overriding our default margin-bottom
-  font-size: $font-size-base; // Match inputs
-  font-weight: $font-weight-normal;
-  line-height: $input-line-height;
-  color: $input-color;
+  font-size: variables.$font-size-base; // Match inputs
+  font-weight: variables.$font-weight-normal;
+  line-height: variables.$input-line-height;
+  color: variables.$input-color;
   text-align: center;
-  background-color: $input-group-addon-bg;
-  border: $input-btn-border-width solid $input-group-addon-border-color;
-  @include border-radius($input-border-radius);
+  background-color: variables.$input-group-addon-bg;
+  border: variables.$input-btn-border-width solid variables.$input-group-addon-border-color;
+  @include border-radius.border-radius(variables.$input-border-radius);
 
   // Sizing
   &.form-control-sm {
-    padding: $input-padding-y-sm $input-padding-x-sm;
-    font-size: $font-size-sm;
-    @include border-radius($input-border-radius-sm);
+    padding: variables.$input-padding-y-sm variables.$input-padding-x-sm;
+    font-size: variables.$font-size-sm;
+    @include border-radius.border-radius(variables.$input-border-radius-sm);
   }
   &.form-control-lg {
-    padding: $input-padding-y-lg $input-padding-x-lg;
-    font-size: $font-size-lg;
-    @include border-radius($input-border-radius-lg);
+    padding: variables.$input-padding-y-lg variables.$input-padding-x-lg;
+    font-size: variables.$font-size-lg;
+    @include border-radius.border-radius(variables.$input-border-radius-lg);
   }
 
   // scss-lint:disable QualifyingElement
@@ -111,7 +115,7 @@
 .input-group-btn:not(:last-child) > .dropdown-toggle,
 .input-group-btn:not(:first-child) > .btn:not(:last-child):not(.dropdown-toggle),
 .input-group-btn:not(:first-child) > .btn-group:not(:last-child) > .btn {
-  @include border-right-radius(0);
+  @include border-radius.border-right-radius(0);
 }
 .input-group-addon:not(:last-child) {
   border-right: 0;
@@ -123,7 +127,7 @@
 .input-group-btn:not(:first-child) > .dropdown-toggle,
 .input-group-btn:not(:last-child) > .btn:not(:first-child),
 .input-group-btn:not(:last-child) > .btn-group:not(:first-child) > .btn {
-  @include border-left-radius(0);
+  @include border-radius.border-left-radius(0);
 }
 .form-control + .input-group-addon:not(:first-child) {
   border-left: 0;
@@ -148,11 +152,11 @@
     flex: 1;
 
     + .btn {
-      margin-left: (-$input-btn-border-width);
+      margin-left: (-(variables.$input-btn-border-width));
     }
 
     // Bring the "active" button to the front
-    @include hover-focus-active {
+    @include hover.hover-focus-active {
       z-index: 3;
     }
   }
@@ -161,16 +165,16 @@
   &:not(:last-child) {
     > .btn,
     > .btn-group {
-      margin-right: (-$input-btn-border-width);
+      margin-right: (-(variables.$input-btn-border-width));
     }
   }
   &:not(:first-child) {
     > .btn,
     > .btn-group {
       z-index: 2;
-      margin-left: (-$input-btn-border-width);
+      margin-left: (-(variables.$input-btn-border-width));
       // Because specificity
-      @include hover-focus-active {
+      @include hover.hover-focus-active {
         z-index: 3;
       }
     }

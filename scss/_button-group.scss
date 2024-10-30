@@ -1,3 +1,8 @@
+@use "mixins";
+@use "mixins/border-radius";
+@use "mixins/hover";
+@use "variables";
+
 // scss-lint:disable QualifyingElement
 
 // Make the div behave like a button
@@ -13,7 +18,7 @@
 
     // Bring the hover, focused, and "active" buttons to the fron to overlay
     // the borders properly
-    @include hover {
+    @include hover.hover {
       z-index: 2;
     }
     &:focus,
@@ -28,7 +33,7 @@
   .btn + .btn-group,
   .btn-group + .btn,
   .btn-group + .btn-group {
-    margin-left: -$input-btn-border-width;
+    margin-left: -(variables.$input-btn-border-width);
   }
 }
 
@@ -51,13 +56,13 @@
   margin-left: 0;
 
   &:not(:last-child):not(.dropdown-toggle) {
-    @include border-right-radius(0);
+    @include border-radius.border-right-radius(0);
   }
 }
 // Need .dropdown-toggle since :last-child doesn't apply given a .dropdown-menu immediately after it
 .btn-group > .btn:last-child:not(:first-child),
 .btn-group > .dropdown-toggle:not(:first-child) {
-  @include border-left-radius(0);
+  @include border-radius.border-left-radius(0);
 }
 
 // Custom edits for including btn-groups within btn-groups (useful for including dropdown buttons within a btn-group)
@@ -70,11 +75,11 @@
 .btn-group > .btn-group:first-child:not(:last-child) {
   > .btn:last-child,
   > .dropdown-toggle {
-    @include border-right-radius(0);
+    @include border-radius.border-right-radius(0);
   }
 }
 .btn-group > .btn-group:last-child:not(:first-child) > .btn:first-child {
-  @include border-left-radius(0);
+  @include border-radius.border-left-radius(0);
 }
 
 // On active and open, don't show outline
@@ -97,8 +102,8 @@
 //
 
 .btn + .dropdown-toggle-split {
-  padding-right: $btn-padding-x * .75;
-  padding-left: $btn-padding-x * .75;
+  padding-right: variables.$btn-padding-x * .75;
+  padding-left: variables.$btn-padding-x * .75;
 
   &::after {
     margin-left: 0;
@@ -106,24 +111,24 @@
 }
 
 .btn-sm + .dropdown-toggle-split {
-  padding-right: $btn-padding-x-sm * .75;
-  padding-left: $btn-padding-x-sm * .75;
+  padding-right: variables.$btn-padding-x-sm * .75;
+  padding-left: variables.$btn-padding-x-sm * .75;
 }
 
 .btn-lg + .dropdown-toggle-split {
-  padding-right: $btn-padding-x-lg * .75;
-  padding-left: $btn-padding-x-lg * .75;
+  padding-right: variables.$btn-padding-x-lg * .75;
+  padding-left: variables.$btn-padding-x-lg * .75;
 }
 
 
 // The clickable button for toggling the menu
 // Remove the gradient and set the same inset shadow as the :active state
 .btn-group.open .dropdown-toggle {
-  @include box-shadow($btn-active-box-shadow);
+  @include mixins.box-shadow(variables.$btn-active-box-shadow);
 
   // Show no shadow for `.btn-link` since it has no other button styles.
   &.btn-link {
-    @include box-shadow(none);
+    @include mixins.box-shadow(none);
   }
 }
 
@@ -147,7 +152,7 @@
   > .btn + .btn-group,
   > .btn-group + .btn,
   > .btn-group + .btn-group {
-    margin-top: -$input-btn-border-width;
+    margin-top: -(variables.$input-btn-border-width);
     margin-left: 0;
   }
 }
@@ -157,10 +162,10 @@
     border-radius: 0;
   }
   &:first-child:not(:last-child) {
-    @include border-bottom-radius(0);
+    @include border-radius.border-bottom-radius(0);
   }
   &:last-child:not(:first-child) {
-    @include border-top-radius(0);
+    @include border-radius.border-top-radius(0);
   }
 }
 .btn-group-vertical > .btn-group:not(:first-child):not(:last-child) > .btn {
@@ -169,11 +174,11 @@
 .btn-group-vertical > .btn-group:first-child:not(:last-child) {
   > .btn:last-child,
   > .dropdown-toggle {
-    @include border-bottom-radius(0);
+    @include border-radius.border-bottom-radius(0);
   }
 }
 .btn-group-vertical > .btn-group:last-child:not(:first-child) > .btn:first-child {
-  @include border-top-radius(0);
+  @include border-radius.border-top-radius(0);
 }
 
 

@@ -1,3 +1,8 @@
+@use "sass:map";
+@use "mixins";
+@use "mixins/border-radius";
+@use "variables";
+
 // scss-lint:disable PropertyCount
 
 // Embedded icons from Open Iconic.
@@ -12,9 +17,9 @@
 .custom-control {
   position: relative;
   display: inline-flex;
-  min-height: (1rem * $line-height-base);
-  padding-left: $custom-control-gutter;
-  margin-right: $custom-control-spacer-x;
+  min-height: (1rem * variables.$line-height-base);
+  padding-left: variables.$custom-control-gutter;
+  margin-right: variables.$custom-control-spacer-x;
   cursor: pointer;
 }
 
@@ -24,31 +29,31 @@
   opacity: 0;
 
   &:checked ~ .custom-control-indicator {
-    color: $custom-control-checked-indicator-color;
-    background-color: $custom-control-checked-indicator-bg;
-    @include box-shadow($custom-control-checked-indicator-box-shadow);
+    color: variables.$custom-control-checked-indicator-color;
+    background-color: variables.$custom-control-checked-indicator-bg;
+    @include mixins.box-shadow(variables.$custom-control-checked-indicator-box-shadow);
   }
 
   &:focus ~ .custom-control-indicator {
     // the mixin is not used here to make sure there is feedback
-    box-shadow: $custom-control-focus-indicator-box-shadow;
+    box-shadow: variables.$custom-control-focus-indicator-box-shadow;
   }
 
   &:active ~ .custom-control-indicator {
-    color: $custom-control-active-indicator-color;
-    background-color: $custom-control-active-indicator-bg;
-    @include box-shadow($custom-control-active-indicator-box-shadow);
+    color: variables.$custom-control-active-indicator-color;
+    background-color: variables.$custom-control-active-indicator-bg;
+    @include mixins.box-shadow(variables.$custom-control-active-indicator-box-shadow);
   }
 
   &:disabled {
     ~ .custom-control-indicator {
-      cursor: $custom-control-disabled-cursor;
-      background-color: $custom-control-disabled-indicator-bg;
+      cursor: variables.$custom-control-disabled-cursor;
+      background-color: variables.$custom-control-disabled-indicator-bg;
     }
 
     ~ .custom-control-description {
-      color: $custom-control-disabled-description-color;
-      cursor: $custom-control-disabled-cursor;
+      color: variables.$custom-control-disabled-description-color;
+      cursor: variables.$custom-control-disabled-cursor;
     }
   }
 }
@@ -59,18 +64,18 @@
 
 .custom-control-indicator {
   position: absolute;
-  top: (($line-height-base - $custom-control-indicator-size) * 0.5);
+  top: ((variables.$line-height-base - variables.$custom-control-indicator-size) * 0.5);
   left: 0;
   display: block;
-  width: $custom-control-indicator-size;
-  height: $custom-control-indicator-size;
+  width: variables.$custom-control-indicator-size;
+  height: variables.$custom-control-indicator-size;
   pointer-events: none;
   user-select: none;
-  background-color: $custom-control-indicator-bg;
+  background-color: variables.$custom-control-indicator-bg;
   background-repeat: no-repeat;
   background-position: center center;
-  background-size: $custom-control-indicator-bg-size;
-  @include box-shadow($custom-control-indicator-box-shadow);
+  background-size: variables.$custom-control-indicator-bg-size;
+  @include mixins.box-shadow(variables.$custom-control-indicator-box-shadow);
 }
 
 // Checkboxes
@@ -79,17 +84,17 @@
 
 .custom-checkbox {
   .custom-control-indicator {
-    @include border-radius($custom-checkbox-radius);
+    @include border-radius.border-radius(variables.$custom-checkbox-radius);
   }
 
   .custom-control-input:checked ~ .custom-control-indicator {
-    background-image: $custom-checkbox-checked-icon;
+    background-image: variables.$custom-checkbox-checked-icon;
   }
 
   .custom-control-input:indeterminate ~ .custom-control-indicator {
-    background-color: $custom-checkbox-indeterminate-bg;
-    background-image: $custom-checkbox-indeterminate-icon;
-    @include box-shadow($custom-checkbox-indeterminate-box-shadow);
+    background-color: variables.$custom-checkbox-indeterminate-bg;
+    background-image: variables.$custom-checkbox-indeterminate-icon;
+    @include mixins.box-shadow(variables.$custom-checkbox-indeterminate-box-shadow);
   }
 }
 
@@ -99,11 +104,11 @@
 
 .custom-radio {
   .custom-control-indicator {
-    border-radius: $custom-radio-radius;
+    border-radius: variables.$custom-radio-radius;
   }
 
   .custom-control-input:checked ~ .custom-control-indicator {
-    background-image: $custom-radio-checked-icon;
+    background-image: variables.$custom-radio-checked-icon;
   }
 }
 
@@ -118,7 +123,7 @@
   flex-direction: column;
 
   .custom-control {
-    margin-bottom: $custom-control-spacer-y;
+    margin-bottom: variables.$custom-control-spacer-y;
 
     + .custom-control {
       margin-left: 0;
@@ -136,24 +141,24 @@
 .custom-select {
   display: inline-block;
   max-width: 100%;
-  $select-border-width: ($border-width * 2);
-  height: calc(#{$input-height} + #{$select-border-width});
-  padding: $custom-select-padding-y ($custom-select-padding-x + $custom-select-indicator-padding) $custom-select-padding-y $custom-select-padding-x;
-  line-height: $custom-select-line-height;
-  color: $custom-select-color;
+  $select-border-width: (variables.$border-width * 2);
+  height: calc(#{variables.$input-height} + #{$select-border-width});
+  padding: variables.$custom-select-padding-y (variables.$custom-select-padding-x + variables.$custom-select-indicator-padding) variables.$custom-select-padding-y variables.$custom-select-padding-x;
+  line-height: variables.$custom-select-line-height;
+  color: variables.$custom-select-color;
   vertical-align: middle;
-  background: $custom-select-bg $custom-select-indicator no-repeat right $custom-select-padding-x center;
-  background-size: $custom-select-bg-size;
-  border: $custom-select-border-width solid $custom-select-border-color;
-  @include border-radius($custom-select-border-radius);
+  background: variables.$custom-select-bg variables.$custom-select-indicator no-repeat right variables.$custom-select-padding-x center;
+  background-size: variables.$custom-select-bg-size;
+  border: variables.$custom-select-border-width solid variables.$custom-select-border-color;
+  @include border-radius.border-radius(variables.$custom-select-border-radius);
   // Use vendor prefixes as `appearance` isn't part of the CSS spec.
   -moz-appearance: none;
   -webkit-appearance: none;
 
   &:focus {
-    border-color: $custom-select-focus-border-color;
+    border-color: variables.$custom-select-focus-border-color;
     outline: none;
-    @include box-shadow($custom-select-focus-box-shadow);
+    @include mixins.box-shadow(variables.$custom-select-focus-box-shadow);
 
     &::-ms-value {
       // For visual consistency with other platforms/browsers,
@@ -161,15 +166,15 @@
       // the selected option text when the (still closed) <select> receives focus
       // in IE and (under certain conditions) Edge.
       // See https://github.com/twbs/bootstrap/issues/19398.
-      color: $input-color;
-      background-color: $input-bg;
+      color: variables.$input-color;
+      background-color: variables.$input-bg;
     }
   }
 
   &:disabled {
-    color: $custom-select-disabled-color;
-    cursor: $cursor-disabled;
-    background-color: $custom-select-disabled-bg;
+    color: variables.$custom-select-disabled-color;
+    cursor: variables.$cursor-disabled;
+    background-color: variables.$custom-select-disabled-bg;
   }
 
   // Hides the default caret in IE11
@@ -179,9 +184,9 @@
 }
 
 .custom-select-sm {
-  padding-top: $custom-select-padding-y;
-  padding-bottom: $custom-select-padding-y;
-  font-size: $custom-select-sm-font-size;
+  padding-top: variables.$custom-select-padding-y;
+  padding-bottom: variables.$custom-select-padding-y;
+  font-size: variables.$custom-select-sm-font-size;
 
   // &:not([multiple]) {
   //   height: 26px;
@@ -198,21 +203,21 @@
   position: relative;
   display: inline-block;
   max-width: 100%;
-  height: $custom-file-height;
+  height: variables.$custom-file-height;
   margin-bottom: 0;
   cursor: pointer;
 }
 
 .custom-file-input {
-  min-width: $custom-file-width;
+  min-width: variables.$custom-file-width;
   max-width: 100%;
-  height: $custom-file-height;
+  height: variables.$custom-file-height;
   margin: 0;
   filter: alpha(opacity = 0);
   opacity: 0;
 
   &:focus ~ .custom-file-control {
-    @include box-shadow($custom-file-focus-box-shadow);
+    @include mixins.box-shadow(variables.$custom-file-focus-box-shadow);
   }
 }
 
@@ -222,18 +227,18 @@
   right: 0;
   left: 0;
   z-index: 5;
-  height: $custom-file-height;
-  padding: $custom-file-padding-x $custom-file-padding-y;
-  line-height: $custom-file-line-height;
-  color: $custom-file-color;
+  height: variables.$custom-file-height;
+  padding: variables.$custom-file-padding-x variables.$custom-file-padding-y;
+  line-height: variables.$custom-file-line-height;
+  color: variables.$custom-file-color;
   pointer-events: none;
   user-select: none;
-  background-color: $custom-file-bg;
-  border: $custom-file-border-width solid $custom-file-border-color;
-  @include border-radius($custom-file-border-radius);
-  @include box-shadow($custom-file-box-shadow);
+  background-color: variables.$custom-file-bg;
+  border: variables.$custom-file-border-width solid variables.$custom-file-border-color;
+  @include border-radius.border-radius(variables.$custom-file-border-radius);
+  @include mixins.box-shadow(variables.$custom-file-box-shadow);
 
-  @each $lang, $text in map-get($custom-file-text, placeholder) {
+  @each $lang, $text in map.get(variables.$custom-file-text, placeholder) {
     &:lang(#{$lang})::after {
       content: $text;
     }
@@ -241,21 +246,21 @@
 
   &::before {
     position: absolute;
-    top: -$custom-file-border-width;
-    right: -$custom-file-border-width;
-    bottom: -$custom-file-border-width;
+    top: -(variables.$custom-file-border-width);
+    right: -(variables.$custom-file-border-width);
+    bottom: -(variables.$custom-file-border-width);
     z-index: 6;
     display: block;
-    height: $custom-file-height;
-    padding: $custom-file-padding-x $custom-file-padding-y;
-    line-height: $custom-file-line-height;
-    color: $custom-file-button-color;
-    background-color: $custom-file-button-bg;
-    border: $custom-file-border-width solid $custom-file-border-color;
-    @include border-radius(0 $custom-file-border-radius $custom-file-border-radius 0);
+    height: variables.$custom-file-height;
+    padding: variables.$custom-file-padding-x variables.$custom-file-padding-y;
+    line-height: variables.$custom-file-line-height;
+    color: variables.$custom-file-button-color;
+    background-color: variables.$custom-file-button-bg;
+    border: variables.$custom-file-border-width solid variables.$custom-file-border-color;
+    @include border-radius.border-radius(0 variables.$custom-file-border-radius variables.$custom-file-border-radius 0);
   }
 
-  @each $lang, $text in map-get($custom-file-text, button-label) {
+  @each $lang, $text in map.get(variables.$custom-file-text, button-label) {
     &:lang(#{$lang})::before {
       content: $text;
     }

@@ -1,3 +1,5 @@
+@use "variables";
+
 // scss-lint:disable QualifyingElement
 
 // Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css
@@ -8,7 +10,7 @@
 // http://www.phpied.com/delay-loading-your-print-css/
 // ==========================================================================
 
-@if $enable-print-styles {
+@if variables.$enable-print-styles {
   @media print {
     *,
     *::before,
@@ -59,7 +61,7 @@
     }
     pre,
     blockquote {
-      border: $border-width solid #999;   // Bootstrap custom code; using `$border-width` instead of 1px
+      border: variables.$border-width solid #999;   // Bootstrap custom code; using `$border-width` instead of 1px
       page-break-inside: avoid;
     }
 
@@ -96,7 +98,7 @@
       display: none;
     }
     .badge {
-      border: $border-width solid #000;
+      border: variables.$border-width solid #000;
     }
 
     .table {

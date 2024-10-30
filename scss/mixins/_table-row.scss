@@ -1,5 +1,9 @@
 // Tables
 
+@use "sass:color";
+
+@use "../mixins";
+
 @mixin table-row-variant($state, $background) {
   // Exact selectors below required to override `.table-striped` and prevent
   // inheritance to nested tables.
@@ -17,7 +21,7 @@
     $hover-background: color.adjust($background, $lightness: -5%);
 
     .table-#{$state} {
-      @include hover {
+      @include mixins.hover {
         background-color: $hover-background;
 
         > td,

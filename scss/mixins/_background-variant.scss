@@ -1,11 +1,15 @@
 // Contextual backgrounds
 
+@use "sass:color";
+
+@use "../mixins";
+
 @mixin bg-variant($parent, $color) {
   #{$parent} {
     background-color: $color !important;
   }
   a#{$parent} {
-    @include hover-focus {
+    @include mixins.hover-focus {
       background-color: color.adjust($color, $lightness: -10%) !important;
     }
   }

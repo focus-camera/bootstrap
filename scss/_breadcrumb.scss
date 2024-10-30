@@ -1,10 +1,14 @@
+@use "mixins/border-radius";
+@use "mixins/clearfix";
+@use "variables";
+
 .breadcrumb {
-  padding: $breadcrumb-padding-y $breadcrumb-padding-x;
-  margin-bottom: $spacer-y;
+  padding: variables.$breadcrumb-padding-y variables.$breadcrumb-padding-x;
+  margin-bottom: variables.$spacer-y;
   list-style: none;
-  background-color: $breadcrumb-bg;
-  @include border-radius($border-radius);
-  @include clearfix;
+  background-color: variables.$breadcrumb-bg;
+  @include border-radius.border-radius(variables.$border-radius);
+  @include clearfix.clearfix;
 }
 
 .breadcrumb-item {
@@ -13,10 +17,10 @@
   // The separator between breadcrumbs (by default, a forward-slash: "/")
   + .breadcrumb-item::before {
     display: inline-block; // Suppress underlining of the separator in modern browsers
-    padding-right: $breadcrumb-item-padding;
-    padding-left: $breadcrumb-item-padding;
-    color: $breadcrumb-divider-color;
-    content: "#{$breadcrumb-divider}";
+    padding-right: variables.$breadcrumb-item-padding;
+    padding-left: variables.$breadcrumb-item-padding;
+    color: variables.$breadcrumb-divider-color;
+    content: "#{variables.$breadcrumb-divider}";
   }
 
   // IE9-11 hack to properly handle hyperlink underlines for breadcrumbs built
@@ -33,6 +37,6 @@
   }
 
   &.active {
-    color: $breadcrumb-active-color;
+    color: variables.$breadcrumb-active-color;
   }
 }

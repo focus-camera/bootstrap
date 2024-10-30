@@ -1,3 +1,10 @@
+@use "sass:map";
+@use "../mixins/breakpoints";
+@use "../mixins/text-emphasis";
+@use "../mixins/text-hide";
+@use "../mixins/text-truncate";
+@use "../variables";
+
 //
 // Text
 //
@@ -6,13 +13,13 @@
 
 .text-justify  { text-align: justify !important; }
 .text-nowrap   { white-space: nowrap !important; }
-.text-truncate { @include text-truncate; }
+.text-truncate { @include text-truncate.text-truncate; }
 
 // Responsive alignment
 
-@each $breakpoint in map-keys($grid-breakpoints) {
-  @include media-breakpoint-up($breakpoint) {
-    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+@each $breakpoint in map.keys(variables.$grid-breakpoints) {
+  @include breakpoints.media-breakpoint-up($breakpoint) {
+    $infix: breakpoints.breakpoint-infix($breakpoint, variables.$grid-breakpoints);
 
     .text#{$infix}-left   { text-align: left !important; }
     .text#{$infix}-right  { text-align: right !important; }
@@ -28,8 +35,8 @@
 
 // Weight and italics
 
-.font-weight-normal { font-weight: $font-weight-normal; }
-.font-weight-bold   { font-weight: $font-weight-bold; }
+.font-weight-normal { font-weight: variables.$font-weight-normal; }
+.font-weight-bold   { font-weight: variables.$font-weight-bold; }
 .font-italic        { font-style: italic; }
 
 // Contextual colors
@@ -38,24 +45,24 @@
   color: #fff !important;
 }
 
-@include text-emphasis-variant('.text-muted', $text-muted);
+@include text-emphasis.text-emphasis-variant('.text-muted', variables.$text-muted);
 
-@include text-emphasis-variant('.text-primary', $brand-primary);
+@include text-emphasis.text-emphasis-variant('.text-primary', variables.$brand-primary);
 
-@include text-emphasis-variant('.text-success', $brand-success);
+@include text-emphasis.text-emphasis-variant('.text-success', variables.$brand-success);
 
-@include text-emphasis-variant('.text-info', $brand-info);
+@include text-emphasis.text-emphasis-variant('.text-info', variables.$brand-info);
 
-@include text-emphasis-variant('.text-warning', $brand-warning);
+@include text-emphasis.text-emphasis-variant('.text-warning', variables.$brand-warning);
 
-@include text-emphasis-variant('.text-danger', $brand-danger);
+@include text-emphasis.text-emphasis-variant('.text-danger', variables.$brand-danger);
 
 // Font color
 
-@include text-emphasis-variant('.text-gray-dark', $gray-dark);
+@include text-emphasis.text-emphasis-variant('.text-gray-dark', variables.$gray-dark);
 
 // Misc
 
 .text-hide {
-  @include text-hide();
+  @include text-hide.text-hide();
 }

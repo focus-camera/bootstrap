@@ -1,3 +1,7 @@
+@use "mixins/hover";
+@use "mixins/table-row";
+@use "variables";
+
 //
 // Basic Bootstrap table
 //
@@ -5,26 +9,26 @@
 .table {
   width: 100%;
   max-width: 100%;
-  margin-bottom: $spacer;
+  margin-bottom: variables.$spacer;
 
   th,
   td {
-    padding: $table-cell-padding;
+    padding: variables.$table-cell-padding;
     vertical-align: top;
-    border-top: $table-border-width solid $table-border-color;
+    border-top: variables.$table-border-width solid variables.$table-border-color;
   }
 
   thead th {
     vertical-align: bottom;
-    border-bottom: (2 * $table-border-width) solid $table-border-color;
+    border-bottom: (2 * variables.$table-border-width) solid variables.$table-border-color;
   }
 
   tbody + tbody {
-    border-top: (2 * $table-border-width) solid $table-border-color;
+    border-top: (2 * variables.$table-border-width) solid variables.$table-border-color;
   }
 
   .table {
-    background-color: $body-bg;
+    background-color: variables.$body-bg;
   }
 }
 
@@ -36,7 +40,7 @@
 .table-sm {
   th,
   td {
-    padding: $table-sm-cell-padding;
+    padding: variables.$table-sm-cell-padding;
   }
 }
 
@@ -46,17 +50,17 @@
 // Add borders all around the table and between all the columns.
 
 .table-bordered {
-  border: $table-border-width solid $table-border-color;
+  border: variables.$table-border-width solid variables.$table-border-color;
 
   th,
   td {
-    border: $table-border-width solid $table-border-color;
+    border: variables.$table-border-width solid variables.$table-border-color;
   }
 
   thead {
     th,
     td {
-      border-bottom-width: (2 * $table-border-width);
+      border-bottom-width: (2 * variables.$table-border-width);
     }
   }
 }
@@ -68,7 +72,7 @@
 
 .table-striped {
   tbody tr:nth-of-type(odd) {
-    background-color: $table-bg-accent;
+    background-color: variables.$table-bg-accent;
   }
 }
 
@@ -79,8 +83,8 @@
 
 .table-hover {
   tbody tr {
-    @include hover {
-      background-color: $table-bg-hover;
+    @include hover.hover {
+      background-color: variables.$table-bg-hover;
     }
   }
 }
@@ -92,11 +96,11 @@
 // inheritance to nested tables.
 
 // Generate the contextual variants
-@include table-row-variant(active, $table-bg-active);
-@include table-row-variant(success, $state-success-bg);
-@include table-row-variant(info, $state-info-bg);
-@include table-row-variant(warning, $state-warning-bg);
-@include table-row-variant(danger, $state-danger-bg);
+@include table-row.table-row-variant(active, variables.$table-bg-active);
+@include table-row.table-row-variant(success, variables.$state-success-bg);
+@include table-row.table-row-variant(info, variables.$state-info-bg);
+@include table-row.table-row-variant(warning, variables.$state-warning-bg);
+@include table-row.table-row-variant(danger, variables.$state-danger-bg);
 
 
 // Inverse styles
@@ -105,26 +109,26 @@
 
 .thead-inverse {
   th {
-    color: $table-inverse-color;
-    background-color: $table-inverse-bg;
+    color: variables.$table-inverse-color;
+    background-color: variables.$table-inverse-bg;
   }
 }
 
 .thead-default {
   th {
-    color: $table-head-color;
-    background-color: $table-head-bg;
+    color: variables.$table-head-color;
+    background-color: variables.$table-head-bg;
   }
 }
 
 .table-inverse {
-  color: $table-inverse-color;
-  background-color: $table-inverse-bg;
+  color: variables.$table-inverse-color;
+  background-color: variables.$table-inverse-bg;
 
   th,
   td,
   thead th {
-    border-color: $body-bg;
+    border-color: variables.$body-bg;
   }
 
   &.table-bordered {

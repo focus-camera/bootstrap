@@ -1,7 +1,12 @@
+@use "../variables";
+
 // Button variants
 //
 // Easily pump out default styles, as well as :hover, :focus, :active,
 // and disabled options for all buttons
+
+@use "sass:color";
+@use "../mixins";
 
 @mixin button-variant($color, $background, $border) {
   $active-background: color.adjust($background, $lightness: -10%);
@@ -10,10 +15,10 @@
   color: $color;
   background-color: $background;
   border-color: $border;
-  @include box-shadow($btn-box-shadow);
+  @include mixins.box-shadow(variables.$btn-box-shadow);
 
   // Hover and focus styles are shared
-  @include hover {
+  @include mixins.hover {
     color: $color;
     background-color: $active-background;
     border-color: $active-border;
@@ -21,8 +26,8 @@
   &:focus,
   &.focus {
     // Avoid using mixin so we can pass custom focus shadow properly
-    @if $enable-shadows {
-      box-shadow: $btn-box-shadow, 0 0 0 2px rgba($border, .5);
+    @if variables.$enable-shadows {
+      box-shadow: variables.$btn-box-shadow, 0 0 0 2px rgba($border, .5);
     } @else {
       box-shadow: 0 0 0 2px rgba($border, .5);
     }
@@ -42,7 +47,7 @@
     background-color: $active-background;
     background-image: none; // Remove the gradient for the pressed/active state
     border-color: $active-border;
-    @include box-shadow($btn-active-box-shadow);
+    @include mixins.box-shadow(variables.$btn-active-box-shadow);
   }
 }
 
@@ -52,7 +57,7 @@
   background-color: transparent;
   border-color: $color;
 
-  @include hover {
+  @include mixins.hover {
     color: $color-hover;
     background-color: $color;
     border-color: $color;
@@ -82,5 +87,5 @@
 @mixin button-size($padding-y, $padding-x, $font-size, $border-radius) {
   padding: $padding-y $padding-x;
   font-size: $font-size;
-  @include border-radius($border-radius);
+  @include mixins.border-radius($border-radius);
 }

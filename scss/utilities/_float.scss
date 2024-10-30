@@ -1,9 +1,14 @@
-@each $breakpoint in map-keys($grid-breakpoints) {
-  @include media-breakpoint-up($breakpoint) {
-    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+@use "sass:map";
+@use "../mixins/breakpoints";
+@use "../mixins/float";
+@use "../variables";
 
-    .float#{$infix}-left  { @include float-left; }
-    .float#{$infix}-right { @include float-right; }
-    .float#{$infix}-none  { @include float-none; }
+@each $breakpoint in map.keys(variables.$grid-breakpoints) {
+  @include breakpoints.media-breakpoint-up($breakpoint) {
+    $infix: breakpoints.breakpoint-infix($breakpoint, variables.$grid-breakpoints);
+
+    .float#{$infix}-left  { @include float.float-left; }
+    .float#{$infix}-right { @include float.float-right; }
+    .float#{$infix}-none  { @include float.float-none; }
   }
 }

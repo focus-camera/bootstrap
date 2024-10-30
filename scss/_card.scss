@@ -1,3 +1,9 @@
+@use "mixins/border-radius";
+@use "mixins/breakpoints";
+@use "mixins/cards";
+@use "mixins/hover";
+@use "variables";
+
 //
 // Base styles
 //
@@ -6,24 +12,24 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  background-color: $card-bg;
-  border: $card-border-width solid $card-border-color;
-  @include border-radius($card-border-radius);
+  background-color: variables.$card-bg;
+  border: variables.$card-border-width solid variables.$card-border-color;
+  @include border-radius.border-radius(variables.$card-border-radius);
 }
 
 .card-block {
   // Enable `flex-grow: 1` for decks and groups so that card blocks take up
   // as much space as possible, ensuring footers are aligned to the bottom.
   flex: 1 1 auto;
-  padding: $card-spacer-x;
+  padding: variables.$card-spacer-x;
 }
 
 .card-title {
-  margin-bottom: $card-spacer-y;
+  margin-bottom: variables.$card-spacer-y;
 }
 
 .card-subtitle {
-  margin-top: -($card-spacer-y * 0.5);
+  margin-top: -(variables.$card-spacer-y * 0.5);
   margin-bottom: 0;
 }
 
@@ -32,25 +38,25 @@
 }
 
 .card-link {
-  @include hover {
+  @include hover.hover {
     text-decoration: none;
   }
 
   + .card-link {
-    margin-left: $card-spacer-x;
+    margin-left: variables.$card-spacer-x;
   }
 }
 
 .card {
   > .list-group:first-child {
     .list-group-item:first-child {
-      @include border-top-radius($card-border-radius);
+      @include border-radius.border-top-radius(variables.$card-border-radius);
     }
   }
 
   > .list-group:last-child {
     .list-group-item:last-child {
-      @include border-bottom-radius($card-border-radius);
+      @include border-radius.border-bottom-radius(variables.$card-border-radius);
     }
   }
 }
@@ -61,23 +67,23 @@
 //
 
 .card-header {
-  padding: $card-spacer-y $card-spacer-x;
+  padding: variables.$card-spacer-y variables.$card-spacer-x;
   margin-bottom: 0; // Removes the default margin-bottom of <hN>
-  background-color: $card-cap-bg;
-  border-bottom: $card-border-width solid $card-border-color;
+  background-color: variables.$card-cap-bg;
+  border-bottom: variables.$card-border-width solid variables.$card-border-color;
 
   &:first-child {
-    @include border-radius($card-border-radius-inner $card-border-radius-inner 0 0);
+    @include border-radius.border-radius(variables.$card-border-radius-inner variables.$card-border-radius-inner 0 0);
   }
 }
 
 .card-footer {
-  padding: $card-spacer-y $card-spacer-x;
-  background-color: $card-cap-bg;
-  border-top: $card-border-width solid $card-border-color;
+  padding: variables.$card-spacer-y variables.$card-spacer-x;
+  background-color: variables.$card-cap-bg;
+  border-top: variables.$card-border-width solid variables.$card-border-color;
 
   &:last-child {
-    @include border-radius(0 0 $card-border-radius-inner $card-border-radius-inner);
+    @include border-radius.border-radius(0 0 variables.$card-border-radius-inner variables.$card-border-radius-inner);
   }
 }
 
@@ -87,15 +93,15 @@
 //
 
 .card-header-tabs {
-  margin-right: -($card-spacer-x * 0.5);
-  margin-bottom: -$card-spacer-y;
-  margin-left: -($card-spacer-x * 0.5);
+  margin-right: -(variables.$card-spacer-x * 0.5);
+  margin-bottom: -(variables.$card-spacer-y);
+  margin-left: -(variables.$card-spacer-x * 0.5);
   border-bottom: 0;
 }
 
 .card-header-pills {
-  margin-right: -($card-spacer-x * 0.5);
-  margin-left: -($card-spacer-x * 0.5);
+  margin-right: -(variables.$card-spacer-x * 0.5);
+  margin-left: -(variables.$card-spacer-x * 0.5);
 }
 
 
@@ -104,39 +110,39 @@
 //
 
 .card-primary {
-  @include card-variant($brand-primary, $brand-primary);
+  @include cards.card-variant(variables.$brand-primary, variables.$brand-primary);
 }
 .card-success {
-  @include card-variant($brand-success, $brand-success);
+  @include cards.card-variant(variables.$brand-success, variables.$brand-success);
 }
 .card-info {
-  @include card-variant($brand-info, $brand-info);
+  @include cards.card-variant(variables.$brand-info, variables.$brand-info);
 }
 .card-warning {
-  @include card-variant($brand-warning, $brand-warning);
+  @include cards.card-variant(variables.$brand-warning, variables.$brand-warning);
 }
 .card-danger {
-  @include card-variant($brand-danger, $brand-danger);
+  @include cards.card-variant(variables.$brand-danger, variables.$brand-danger);
 }
 
 // Remove all backgrounds
 .card-outline-primary {
-  @include card-outline-variant($btn-primary-bg);
+  @include cards.card-outline-variant(variables.$btn-primary-bg);
 }
 .card-outline-secondary {
-  @include card-outline-variant($btn-secondary-border);
+  @include cards.card-outline-variant(variables.$btn-secondary-border);
 }
 .card-outline-info {
-  @include card-outline-variant($btn-info-bg);
+  @include cards.card-outline-variant(variables.$btn-info-bg);
 }
 .card-outline-success {
-  @include card-outline-variant($btn-success-bg);
+  @include cards.card-outline-variant(variables.$btn-success-bg);
 }
 .card-outline-warning {
-  @include card-outline-variant($btn-warning-bg);
+  @include cards.card-outline-variant(variables.$btn-warning-bg);
 }
 .card-outline-danger {
-  @include card-outline-variant($btn-danger-bg);
+  @include cards.card-outline-variant(variables.$btn-danger-bg);
 }
 
 //
@@ -144,7 +150,7 @@
 //
 
 .card-inverse {
-  @include card-inverse;
+  @include cards.card-inverse;
 }
 
 //
@@ -160,7 +166,7 @@
 // Card image
 .card-img {
   // margin: -1.325rem;
-  @include border-radius($card-border-radius-inner);
+  @include border-radius.border-radius(variables.$card-border-radius-inner);
 }
 .card-img-overlay {
   position: absolute;
@@ -168,23 +174,23 @@
   right: 0;
   bottom: 0;
   left: 0;
-  padding: $card-img-overlay-padding;
+  padding: variables.$card-img-overlay-padding;
 }
 
 
 
 // Card image caps
 .card-img-top {
-  @include border-top-radius($card-border-radius-inner);
+  @include border-radius.border-top-radius(variables.$card-border-radius-inner);
 }
 .card-img-bottom {
-  @include border-bottom-radius($card-border-radius-inner);
+  @include border-radius.border-bottom-radius(variables.$card-border-radius-inner);
 }
 
 
 // Card deck
 
-@include media-breakpoint-up(sm) {
+@include breakpoints.media-breakpoint-up(sm) {
   .card-deck {
     display: flex;
     flex-flow: row wrap;
@@ -197,8 +203,8 @@
       // Selectively apply horizontal margins to cards to avoid doing the
       // negative margin dance like our grid. This differs from the grid
       // due to the use of margins as gutters instead of padding.
-      &:not(:first-child) { margin-left: $card-deck-margin; }
-      &:not(:last-child) { margin-right: $card-deck-margin; }
+      &:not(:first-child) { margin-left: variables.$card-deck-margin; }
+      &:not(:last-child) { margin-right: variables.$card-deck-margin; }
     }
   }
 }
@@ -208,7 +214,7 @@
 // Card groups
 //
 
-@include media-breakpoint-up(sm) {
+@include breakpoints.media-breakpoint-up(sm) {
   .card-group {
     display: flex;
     flex-flow: row wrap;
@@ -222,9 +228,9 @@
       }
 
       // Handle rounded corners
-      @if $enable-rounded {
+      @if variables.$enable-rounded {
         &:first-child {
-          @include border-right-radius(0);
+          @include border-radius.border-right-radius(0);
 
           .card-img-top {
             border-top-right-radius: 0;
@@ -234,7 +240,7 @@
           }
         }
         &:last-child {
-          @include border-left-radius(0);
+          @include border-radius.border-left-radius(0);
 
           .card-img-top {
             border-top-left-radius: 0;
@@ -262,15 +268,15 @@
 // Columns
 //
 
-@include media-breakpoint-up(sm) {
+@include breakpoints.media-breakpoint-up(sm) {
   .card-columns {
-    column-count: $card-columns-count;
-    column-gap: $card-columns-gap;
+    column-count: variables.$card-columns-count;
+    column-gap: variables.$card-columns-gap;
 
     .card {
       display: inline-block; // Don't let them vertically span multiple columns
       width: 100%; // Don't let their width change
-      margin-bottom: $card-columns-margin;
+      margin-bottom: variables.$card-columns-margin;
     }
   }
 }

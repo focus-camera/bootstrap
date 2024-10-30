@@ -1,19 +1,24 @@
+@use "../mixins/background-variant";
+@use "../variables";
+
 //
 // Contextual backgrounds
 //
 
+@use "sass:color";
+
 .bg-faded {
-  background-color: color.adjust($body-bg, $lightness: -3%);
+  background-color: color.adjust(variables.$body-bg, $lightness: -3%);
 }
 
-@include bg-variant('.bg-primary', $brand-primary);
+@include background-variant.bg-variant('.bg-primary', variables.$brand-primary);
 
-@include bg-variant('.bg-success', $brand-success);
+@include background-variant.bg-variant('.bg-success', variables.$brand-success);
 
-@include bg-variant('.bg-info', $brand-info);
+@include background-variant.bg-variant('.bg-info', variables.$brand-info);
 
-@include bg-variant('.bg-warning', $brand-warning);
+@include background-variant.bg-variant('.bg-warning', variables.$brand-warning);
 
-@include bg-variant('.bg-danger', $brand-danger);
+@include background-variant.bg-variant('.bg-danger', variables.$brand-danger);
 
-@include bg-variant('.bg-inverse', $brand-inverse);
+@include background-variant.bg-variant('.bg-inverse', variables.$brand-inverse);

@@ -1,29 +1,36 @@
+@use "mixins";
+@use "mixins/border-radius";
+@use "mixins/reset-text";
+@use "variables";
+
+@use "sass:color";
+
 .popover {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: $zindex-popover;
+  z-index: variables.$zindex-popover;
   display: block;
-  max-width: $popover-max-width;
-  padding: $popover-inner-padding;
+  max-width: variables.$popover-max-width;
+  padding: variables.$popover-inner-padding;
   // Our parent element can be arbitrary since tooltips are by default inserted as a sibling of their target element.
   // So reset our font and text properties to avoid inheriting weird values.
-  @include reset-text();
-  font-size: $font-size-sm;
+  @include reset-text.reset-text();
+  font-size: variables.$font-size-sm;
   // Allow breaking very long words so they don't overflow the popover's bounds
   word-wrap: break-word;
-  background-color: $popover-bg;
+  background-color: variables.$popover-bg;
   background-clip: padding-box;
-  border: $popover-border-width solid $popover-border-color;
-  @include border-radius($border-radius-lg);
-  @include box-shadow($popover-box-shadow);
+  border: variables.$popover-border-width solid variables.$popover-border-color;
+  @include border-radius.border-radius(variables.$border-radius-lg);
+  @include mixins.box-shadow(variables.$popover-box-shadow);
 
 
   // Popover directions
 
   &.popover-top,
   &.bs-tether-element-attached-bottom {
-    margin-top: -$popover-arrow-width;
+    margin-top: -(variables.$popover-arrow-width);
 
     &::before,
     &::after {
@@ -32,21 +39,21 @@
     }
 
     &::before {
-      bottom: -$popover-arrow-outer-width;
-      margin-left: -$popover-arrow-outer-width;
-      border-top-color: $popover-arrow-outer-color;
+      bottom: -(variables.$popover-arrow-outer-width);
+      margin-left: -(variables.$popover-arrow-outer-width);
+      border-top-color: variables.$popover-arrow-outer-color;
     }
 
     &::after {
-      bottom: -($popover-arrow-outer-width - 1);
-      margin-left: -$popover-arrow-width;
-      border-top-color: $popover-arrow-color;
+      bottom: -(variables.$popover-arrow-outer-width - 1);
+      margin-left: -(variables.$popover-arrow-width);
+      border-top-color: variables.$popover-arrow-color;
     }
   }
 
   &.popover-right,
   &.bs-tether-element-attached-left {
-    margin-left: $popover-arrow-width;
+    margin-left: variables.$popover-arrow-width;
 
     &::before,
     &::after {
@@ -55,21 +62,21 @@
     }
 
     &::before {
-      left: -$popover-arrow-outer-width;
-      margin-top: -$popover-arrow-outer-width;
-      border-right-color: $popover-arrow-outer-color;
+      left: -(variables.$popover-arrow-outer-width);
+      margin-top: -(variables.$popover-arrow-outer-width);
+      border-right-color: variables.$popover-arrow-outer-color;
     }
 
     &::after {
-      left: -($popover-arrow-outer-width - 1);
-      margin-top: -($popover-arrow-outer-width - 1);
-      border-right-color: $popover-arrow-color;
+      left: -(variables.$popover-arrow-outer-width - 1);
+      margin-top: -(variables.$popover-arrow-outer-width - 1);
+      border-right-color: variables.$popover-arrow-color;
     }
   }
 
   &.popover-bottom,
   &.bs-tether-element-attached-top {
-    margin-top: $popover-arrow-width;
+    margin-top: variables.$popover-arrow-width;
 
     &::before,
     &::after {
@@ -78,15 +85,15 @@
     }
 
     &::before {
-      top: -$popover-arrow-outer-width;
-      margin-left: -$popover-arrow-outer-width;
-      border-bottom-color: $popover-arrow-outer-color;
+      top: -(variables.$popover-arrow-outer-width);
+      margin-left: -(variables.$popover-arrow-outer-width);
+      border-bottom-color: variables.$popover-arrow-outer-color;
     }
 
     &::after {
-      top: -($popover-arrow-outer-width - 1);
-      margin-left: -$popover-arrow-width;
-      border-bottom-color: $popover-title-bg;
+      top: -(variables.$popover-arrow-outer-width - 1);
+      margin-left: -(variables.$popover-arrow-width);
+      border-bottom-color: variables.$popover-title-bg;
     }
 
     // This will remove the popover-title's border just below the arrow
@@ -98,13 +105,13 @@
       width: 20px;
       margin-left: -10px;
       content: "";
-      border-bottom: 1px solid $popover-title-bg;
+      border-bottom: 1px solid variables.$popover-title-bg;
     }
   }
 
   &.popover-left,
   &.bs-tether-element-attached-right {
-    margin-left: -$popover-arrow-width;
+    margin-left: -(variables.$popover-arrow-width);
 
     &::before,
     &::after {
@@ -113,15 +120,15 @@
     }
 
     &::before {
-      right: -$popover-arrow-outer-width;
-      margin-top: -$popover-arrow-outer-width;
-      border-left-color: $popover-arrow-outer-color;
+      right: -(variables.$popover-arrow-outer-width);
+      margin-top: -(variables.$popover-arrow-outer-width);
+      border-left-color: variables.$popover-arrow-outer-color;
     }
 
     &::after {
-      right: -($popover-arrow-outer-width - 1);
-      margin-top: -($popover-arrow-outer-width - 1);
-      border-left-color: $popover-arrow-color;
+      right: -(variables.$popover-arrow-outer-width - 1);
+      margin-top: -(variables.$popover-arrow-outer-width - 1);
+      border-left-color: variables.$popover-arrow-color;
     }
   }
 }
@@ -129,13 +136,13 @@
 
 // Offset the popover to account for the popover arrow
 .popover-title {
-  padding: $popover-title-padding-y $popover-title-padding-x;
+  padding: variables.$popover-title-padding-y variables.$popover-title-padding-x;
   margin-bottom: 0; // Reset the default from Reboot
-  font-size: $font-size-base;
-  background-color: $popover-title-bg;
-  border-bottom: $popover-border-width solid color.adjust($popover-title-bg, $lightness: -5%);
-  $offset-border-width: calc(#{$border-radius-lg} - #{$popover-border-width});
-  @include border-top-radius($offset-border-width);
+  font-size: variables.$font-size-base;
+  background-color: variables.$popover-title-bg;
+  border-bottom: variables.$popover-border-width solid color.adjust(variables.$popover-title-bg, $lightness: -5%);
+  $offset-border-width: calc(#{variables.$border-radius-lg} - #{variables.$popover-border-width});
+  @include border-radius.border-top-radius($offset-border-width);
 
   &:empty {
     display: none;
@@ -143,7 +150,7 @@
 }
 
 .popover-content {
-  padding: $popover-content-padding-y $popover-content-padding-x;
+  padding: variables.$popover-content-padding-y variables.$popover-content-padding-x;
 }
 
 
@@ -163,9 +170,9 @@
 
 .popover::before {
   content: "";
-  border-width: $popover-arrow-outer-width;
+  border-width: variables.$popover-arrow-outer-width;
 }
 .popover::after {
   content: "";
-  border-width: $popover-arrow-width;
+  border-width: variables.$popover-arrow-width;
 }

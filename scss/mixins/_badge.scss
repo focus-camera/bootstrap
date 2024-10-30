@@ -1,10 +1,13 @@
 // Badges
 
+@use "sass:color";
+@use "../mixins";
+
 @mixin badge-variant($color) {
   background-color: $color;
 
   &[href] {
-    @include hover-focus {
+    @include mixins.hover-focus {
       background-color: color.adjust($color, $lightness: -10%);
     }
   }

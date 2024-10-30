@@ -1,4 +1,8 @@
+@use "../variables";
+
 // Card variants
+
+@use "../mixins";
 
 @mixin card-variant($background, $border) {
   background-color: $background;
@@ -40,8 +44,8 @@
     color: rgba(255,255,255,.65);
   }
   .card-link {
-    @include hover-focus {
-      color: $card-link-hover-color;
+    @include mixins.hover-focus {
+      color: variables.$card-link-hover-color;
     }
   }
 }

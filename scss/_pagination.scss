@@ -1,55 +1,60 @@
+@use "mixins/border-radius";
+@use "mixins/hover";
+@use "mixins/pagination";
+@use "variables";
+
 .pagination {
   display: flex;
   // 1-2: Disable browser default list styles
   padding-left: 0; // 1
   list-style: none; // 2
-  @include border-radius();
+  @include border-radius.border-radius();
 }
 
 .page-item {
   &:first-child {
     .page-link {
       margin-left: 0;
-      @include border-left-radius($border-radius);
+      @include border-radius.border-left-radius(variables.$border-radius);
     }
   }
   &:last-child {
     .page-link {
-      @include border-right-radius($border-radius);
+      @include border-radius.border-right-radius(variables.$border-radius);
     }
   }
 
   &.active .page-link {
     z-index: 2;
-    color: $pagination-active-color;
-    background-color: $pagination-active-bg;
-    border-color: $pagination-active-border;
+    color: variables.$pagination-active-color;
+    background-color: variables.$pagination-active-bg;
+    border-color: variables.$pagination-active-border;
   }
 
   &.disabled .page-link {
-    color: $pagination-disabled-color;
+    color: variables.$pagination-disabled-color;
     pointer-events: none;
-    cursor: $cursor-disabled; // While `pointer-events: none` removes the cursor in modern browsers, we provide a disabled cursor as a fallback.
-    background-color: $pagination-disabled-bg;
-    border-color: $pagination-disabled-border;
+    cursor: variables.$cursor-disabled; // While `pointer-events: none` removes the cursor in modern browsers, we provide a disabled cursor as a fallback.
+    background-color: variables.$pagination-disabled-bg;
+    border-color: variables.$pagination-disabled-border;
   }
 }
 
 .page-link {
   position: relative;
   display: block;
-  padding: $pagination-padding-y $pagination-padding-x;
+  padding: variables.$pagination-padding-y variables.$pagination-padding-x;
   margin-left: -1px;
-  line-height: $pagination-line-height;
-  color: $pagination-color;
-  background-color: $pagination-bg;
-  border: $pagination-border-width solid $pagination-border-color;
+  line-height: variables.$pagination-line-height;
+  color: variables.$pagination-color;
+  background-color: variables.$pagination-bg;
+  border: variables.$pagination-border-width solid variables.$pagination-border-color;
 
-  @include hover-focus {
-    color: $pagination-hover-color;
+  @include hover.hover-focus {
+    color: variables.$pagination-hover-color;
     text-decoration: none;
-    background-color: $pagination-hover-bg;
-    border-color: $pagination-hover-border;
+    background-color: variables.$pagination-hover-bg;
+    border-color: variables.$pagination-hover-border;
   }
 }
 
@@ -59,9 +64,9 @@
 //
 
 .pagination-lg {
-  @include pagination-size($pagination-padding-y-lg, $pagination-padding-x-lg, $font-size-lg, $line-height-lg, $border-radius-lg);
+  @include pagination.pagination-size(variables.$pagination-padding-y-lg, variables.$pagination-padding-x-lg, variables.$font-size-lg, variables.$line-height-lg, variables.$border-radius-lg);
 }
 
 .pagination-sm {
-  @include pagination-size($pagination-padding-y-sm, $pagination-padding-x-sm, $font-size-sm, $line-height-sm, $border-radius-sm);
+  @include pagination.pagination-size(variables.$pagination-padding-y-sm, variables.$pagination-padding-x-sm, variables.$font-size-sm, variables.$line-height-sm, variables.$border-radius-sm);
 }

@@ -1,10 +1,14 @@
+@use "sass:map";
+@use "../mixins/breakpoints";
+@use "../variables";
+
 // Flex variation
 //
 // Custom styles for additional flex alignment options.
 
-@each $breakpoint in map-keys($grid-breakpoints) {
-  @include media-breakpoint-up($breakpoint) {
-    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+@each $breakpoint in map.keys(variables.$grid-breakpoints) {
+  @include breakpoints.media-breakpoint-up($breakpoint) {
+    $infix: breakpoints.breakpoint-infix($breakpoint, variables.$grid-breakpoints);
 
     .flex#{$infix}-first     { order: -1; }
     .flex#{$infix}-last      { order: 1; }

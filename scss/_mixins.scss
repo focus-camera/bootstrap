@@ -1,17 +1,21 @@
+@use "sass:list";
+@use "sass:meta";
+@use "variables";
+
 // Toggles
 //
 // Used in conjunction with global variables to enable certain theme features.
 
 @mixin box-shadow($shadow...) {
-  @if $enable-shadows {
+  @if variables.$enable-shadows {
     box-shadow: $shadow;
   }
 }
 
 @mixin transition($transition...) {
-  @if $enable-transitions {
-    @if length($transition) == 0 {
-      transition: $transition-base;
+  @if variables.$enable-transitions {
+    @if list.length($transition) == 0 {
+      transition: variables.$transition-base;
     } @else {
       transition: $transition;
     }
@@ -19,39 +23,39 @@
 }
 
 // Utilities
-@import "mixins/breakpoints";
-@import "mixins/hover";
-@import "mixins/image";
-@import "mixins/badge";
-@import "mixins/resize";
-@import "mixins/screen-reader";
-@import "mixins/size";
-@import "mixins/reset-text";
-@import "mixins/text-emphasis";
-@import "mixins/text-hide";
-@import "mixins/text-truncate";
-@import "mixins/transforms";
-@import "mixins/visibility";
+@include meta.load-css("mixins/breakpoints");
+@include meta.load-css("mixins/hover");
+@include meta.load-css("mixins/image");
+@include meta.load-css("mixins/badge");
+@include meta.load-css("mixins/resize");
+@include meta.load-css("mixins/screen-reader");
+@include meta.load-css("mixins/size");
+@include meta.load-css("mixins/reset-text");
+@include meta.load-css("mixins/text-emphasis");
+@include meta.load-css("mixins/text-hide");
+@include meta.load-css("mixins/text-truncate");
+@include meta.load-css("mixins/transforms");
+@include meta.load-css("mixins/visibility");
 
 // // Components
-@import "mixins/alert";
-@import "mixins/buttons";
-@import "mixins/cards";
-@import "mixins/pagination";
-@import "mixins/lists";
-@import "mixins/list-group";
-@import "mixins/nav-divider";
-@import "mixins/forms";
-@import "mixins/table-row";
+@include meta.load-css("mixins/alert");
+@include meta.load-css("mixins/buttons");
+@include meta.load-css("mixins/cards");
+@include meta.load-css("mixins/pagination");
+@include meta.load-css("mixins/lists");
+@include meta.load-css("mixins/list-group");
+@include meta.load-css("mixins/nav-divider");
+@include meta.load-css("mixins/forms");
+@include meta.load-css("mixins/table-row");
 
 // // Skins
-@import "mixins/background-variant";
-@import "mixins/border-radius";
-@import "mixins/gradients";
+@include meta.load-css("mixins/background-variant");
+@include meta.load-css("mixins/border-radius");
+@include meta.load-css("mixins/gradients");
 
 // // Layout
-@import "mixins/clearfix";
+@include meta.load-css("mixins/clearfix");
 // @import "mixins/navbar-align";
-@import "mixins/grid-framework";
-@import "mixins/grid";
-@import "mixins/float";
+@include meta.load-css("mixins/grid-framework");
+@include meta.load-css("mixins/grid");
+@include meta.load-css("mixins/float");

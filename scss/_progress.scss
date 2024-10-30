@@ -1,6 +1,10 @@
+@use "mixins/border-radius";
+@use "mixins/gradients";
+@use "variables";
+
 // Progress animations
 @keyframes progress-bar-stripes {
-  from { background-position: $progress-height 0; }
+  from { background-position: variables.$progress-height 0; }
   to { background-position: 0 0; }
 }
 
@@ -8,25 +12,25 @@
 .progress {
   display: flex;
   overflow: hidden; // force rounded corners by cropping it
-  font-size: $progress-font-size;
-  line-height: $progress-height;
+  font-size: variables.$progress-font-size;
+  line-height: variables.$progress-height;
   text-align: center;
-  background-color: $progress-bg;
-  @include border-radius($progress-border-radius);
+  background-color: variables.$progress-bg;
+  @include border-radius.border-radius(variables.$progress-border-radius);
 }
 .progress-bar {
-  height: $progress-height;
-  color: $progress-bar-color;
-  background-color: $progress-bar-bg;
+  height: variables.$progress-height;
+  color: variables.$progress-bar-color;
+  background-color: variables.$progress-bar-bg;
 }
 
 // Striped
 .progress-bar-striped {
-  @include gradient-striped();
-  background-size: $progress-height $progress-height;
+  @include gradients.gradient-striped();
+  background-size: variables.$progress-height variables.$progress-height;
 }
 
 // Animated
 .progress-bar-animated {
-  animation: progress-bar-stripes $progress-bar-animation-timing;
+  animation: progress-bar-stripes variables.$progress-bar-animation-timing;
 }
